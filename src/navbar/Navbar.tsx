@@ -7,6 +7,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import CreateBattlePage from "../pages/CreateBattlePage";
 
 
 const pages = ['Create New Battle', 'List Battles'];
@@ -24,7 +25,7 @@ const Navbar: React.FC = () => {
       </AppBar>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/create-new-battle" element={<CreateBattle/>} />
+        <Route path="/create-new-battle" element={<CreateBattlePage/>} />
         <Route path="/list-battles" element={<ListBattles/>} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
@@ -34,10 +35,6 @@ const Navbar: React.FC = () => {
 
 function Home() {
   return <h2>Home</h2>;
-}
-
-function CreateBattle() {
-  return <h2>Crate New Battle</h2>;
 }
 
 function ListBattles() {
