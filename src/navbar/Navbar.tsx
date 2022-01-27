@@ -1,13 +1,10 @@
 import React from "react";
-import {AppBar, Box, Button, Divider} from "@mui/material";
+import {AppBar, Box} from "@mui/material";
 import './Navbar.css';
 import NavButton from "./NavButton";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
 import CreateBattlePage from "../pages/CreateBattlePage";
+import ListBattlesPage from "../pages/ListBattlesPage";
 
 
 const pages = ['Create New Battle', 'List Battles'];
@@ -24,22 +21,14 @@ const Navbar: React.FC = () => {
         </Box>
       </AppBar>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<ListBattlesPage/>} />
         <Route path="/create-new-battle" element={<CreateBattlePage/>} />
-        <Route path="/list-battles" element={<ListBattles/>} />
+        <Route path="/list-battles" element={<ListBattlesPage/>} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
     </Router>
   );
 };
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function ListBattles() {
-  return <h2>List Battles</h2>;
-}
 
 function NotFound() {
   return <h2>Page Not Found (404)</h2>;

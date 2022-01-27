@@ -1,20 +1,34 @@
 import React, {useState} from "react";
 import {Box, Typography} from "@mui/material";
 import {LoadingButton} from '@mui/lab';
-import {defaultState, reducer, START_GLOBAL_LOADING} from "../reducers/GlobalReducer";
+import {START_GLOBAL_LOADING, STOP_GLOBAL_LOADING} from "../reducers/GlobalReducer";
 import useGlobalAppState from "../contexts/useGlobalAppState";
 
-
-interface Props {
-
-}
-
-const CreateBattlePage: React.FC<Props> = ({}) => {
+const CreateBattlePage: React.FC = ({}) => {
   const [, dispatch] = useGlobalAppState();
   const [loading, setLoading] = useState(false);
-  const handleClick = () => {
+  const handleClick = async () => {
     setLoading(true);
-    dispatch({ type: START_GLOBAL_LOADING });
+    dispatch({type: START_GLOBAL_LOADING});
+
+    const url = `http://localhost:8080/createNewBattle`;
+    const response = await fetch(url, {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    setLoading(false);
+    dispatch({type: STOP_GLOBAL_LOADING});
+    console.log(response);
+    if (response.ok) {
+      console.log(await response.json());
+    } else {
+      console.error(`Failed to request:`, response.status, response.statusText);
+    }
   };
 
   return (
