@@ -1,12 +1,12 @@
 export default interface Army {
-  id: string;
-  health: number;
+  armyName: string;
   startingHealth: number;
+  currentHealth: number;
   attackStrategy: AttackStrategy;
 }
 
 enum AttackStrategy {
-  RANDOM,
-  WEAKEST,
-  STRONGEST,
+  RANDOM= 'RANDOM',
+  WEAKEST= 'WEAKEST',
+  STRONGEST= 'STRONGEST',
 }

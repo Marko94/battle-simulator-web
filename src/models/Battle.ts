@@ -7,8 +7,8 @@ export default interface Battle {
 }
 
 enum BattleStatus {
-  PREPARING,
-  READY,
-  IN_PROGRESS,
-  FINISHED,
+  PREPARING= "PREPARING",
+  READY= "READY",
+  IN_PROGRESS= "IN_PROGRESS",
+  FINISHED= "FINISHED",
 }
